@@ -1,0 +1,7 @@
+[
+    { "id": 1, "name": "João Silva", "email": "joao.silva@example.com", "senha": "senhaNova456" },
+    { "id": 2, "name": "Beatriz Souza", "email": "beatriz.souza@example.com", "senha": "senhaForte789" },
+    { "id": 3, "name": "Lucas Almeida", "email": "lucas.almeida@example.com", "senha": "senhaSegura321" },
+    { "id": 4, "name": "Gabriela Santos", "email": "gabriela.santos@example.com", "senha": "senhaPro123" },
+    { "id": 5, "name": "Ricardo Oliveira", "email": "ricardo.oliveira@example.com", "senha": "senhaNova321" }
+]

@@ -1,0 +1,7 @@
+[
+    { "id": 1, "id_user": 1, "tipo": "Artigo", "titulo": "Artigo Científico", "curso": "Engenharia Ambiental", "turno": "Tarde" },
+    { "id": 2, "id_user": 2, "tipo": "Monografia", "titulo": "Monografia de Conclusão", "curso": "Química Industrial", "turno": "Manhã" },
+    { "id": 3, "id_user": 3, "tipo": "Pesquisa", "titulo": "Pesquisa Literária", "curso": "Linguística", "turno": "Tarde" },
+    { "id": 4, "id_user": 4, "tipo": "Experimento", "titulo": "Experimento Físico", "curso": "Engenharia Mecânica", "turno": "Manhã" },
+    { "id": 5, "id_user": 5, "tipo": "Tese", "titulo": "Tese de Doutorado", "curso": "Astrofísica", "turno": "Noite" }
+]
