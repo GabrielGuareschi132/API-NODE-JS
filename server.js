@@ -1,10 +1,13 @@
-const http = require('http');
+// server.js
+const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
-const usersFilePath = path.join(__dirname, 'data', 'users.json'); //http://localhost:3300/api/users - Usuários
-const docsFilePath = path.join(__dirname, 'data', 'docs.json'); //http://localhost:3300/api/docs - Documentos
+const app = express();
+const port = 3300;
 
+const usersFilePath = path.join(__dirname, 'data', 'users.json');
+const docsFilePath = path.join(__dirname, 'data', 'docs.json');
 
 const readJSONFile = (filePath) => {
     try {
@@ -18,36 +21,26 @@ const readJSONFile = (filePath) => {
 const usersData = readJSONFile(usersFilePath);
 const docsData = readJSONFile(docsFilePath);
 
-const handleRequest = (request, response) => { 
-    switch (request.url) {
-        case '/api/users':
-            if (usersData) {
-                response.writeHead(200, { 'Content-Type': 'application/json' });
-                response.end(usersData);
-            } else {
-                response.writeHead(500, { 'Content-Type': 'text/plain' });
-                response.end('Erro ao carregar dados dos usuários.');
-            }
-            break;
-        case '/api/docs':
-            if (docsData) {
-                response.writeHead(200, { 'Content-Type': 'application/json' });
-                response.end(docsData);
-            } else {
-                response.writeHead(500, { 'Content-Type': 'text/plain' });
-                response.end('Erro ao carregar dados dos documentos.');
-            }
-            break;
-        default:
-            response.writeHead(404, { 'Content-Type': 'text/plain' });
-            response.end('404 Página não encontrada');
+app.get('/api/users', (req, res) => {
+    if (usersData) {
+        res.status(200).json(JSON.parse(usersData));
+    } else {
+        res.status(500).send('Erro ao carregar dados dos usuários.');
     }
-};
+});
 
-const server = http.createServer(handleRequest);
+app.get('/api/docs', (req, res) => {
+    if (docsData) {
+        res.status(200).json(JSON.parse(docsData));
+    } else {
+        res.status(500).send('Erro ao carregar dados dos documentos.');
+    }
+});
 
-const port = 3300;
+app.use((req, res) => {
+    res.status(404).send('404 Página não encontrada');
+});
 
-server.listen(port, () => {
+app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
